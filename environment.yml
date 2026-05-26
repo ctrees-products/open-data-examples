@@ -1,0 +1,21 @@
+name: aws-agb-env
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.14
+  - numpy
+  - pandas
+  - geopandas
+  - xarray
+  - rioxarray
+  - rasterio # rioxarray dependency
+  - pyproj # geopandas/rioxarray dependency
+  - shapely # geopandas dependency
+  - zarr # likely needed with arraylake/icechunk
+  - boto3 # for S3 access
+  - pip
+  - pip:
+      - arraylake
+      - ipykernel
+      - icechunk==2.0.5
