@@ -1,0 +1,33 @@
+# Environment for the CTrees CONUS canopy height & cover notebooks (5 m and 30 m).
+#
+#   conda env create -f environment.yml
+#   conda activate ctrees-tree-height-env
+#
+# Then authenticate to Arraylake once, interactively. This uses a cached browser
+# login -- the notebooks never read an API key:
+#
+#   al auth login
+#
+name: ctrees-tree-height-env
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - numpy
+  - pandas
+  - xarray
+  - dask                 # the 30m state-wide arrays do not fit in memory
+  - zarr>=3              # these repos are Zarr v3, with sharding
+  - rioxarray
+  - rasterio             # rioxarray dependency
+  - pyproj               # CRS handling
+  - shapely              # geometry
+  - geopandas            # reading the AOI
+  - matplotlib
+  - pip
+  - pip:
+      - arraylake>=1.6
+      - icechunk==2.2.2  # pinned to the version that wrote these repos
+      - ipykernel
+      - jupyter
+      - nbconvert        # used to clear outputs before committing
